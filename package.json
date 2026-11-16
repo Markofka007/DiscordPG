@@ -1,0 +1,29 @@
+{
+  "name": "discordpg",
+  "version": "0.2.4",
+  "private": true,
+  "description": "DiscordPG (Discord Privacy Guard): security-first GnuPG encryption for Discord DMs, as a Vencord plugin",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "testedWith": {
+    "vencord": "1.15.17 (d07030c)"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "setup": "bash scripts/setup.sh",
+    "package": "node scripts/package.mjs",
+    "package:sign": "node scripts/package.mjs --sign"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

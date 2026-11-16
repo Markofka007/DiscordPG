@@ -1,0 +1,204 @@
+/* DiscordPG */
+
+/* Hide Discord's own rendering of the ciphertext once we have plaintext to show. */
+.vc-pg-hidden [class*="messageContent"] {
+    display: none;
+}
+
+.vc-pg-accessory {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.vc-pg-body {
+    color: var(--text-default, var(--text-normal));
+    user-select: text;
+}
+
+.vc-pg-footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.vc-pg-footer svg {
+    flex: none;
+}
+
+.vc-pg-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-link);
+    cursor: pointer;
+    font-size: 12px;
+}
+.vc-pg-link:hover {
+    text-decoration: underline;
+}
+
+.vc-pg-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    background: var(--background-mod-subtle, var(--background-secondary));
+    color: var(--text-default, var(--text-normal));
+}
+.vc-pg-banner-danger {
+    background: color-mix(in srgb, var(--status-danger) 15%, transparent);
+    border-left: 3px solid var(--status-danger);
+}
+.vc-pg-banner-warn {
+    background: color-mix(in srgb, var(--status-warning) 15%, transparent);
+    border-left: 3px solid var(--status-warning);
+}
+.vc-pg-banner-muted {
+    border-left: 3px solid var(--text-muted);
+}
+
+.vc-pg-verified { color: var(--status-positive, var(--text-positive)); }
+.vc-pg-unverified { color: var(--text-muted); }
+.vc-pg-self { color: var(--status-positive, var(--text-positive)); }
+.vc-pg-danger { color: var(--status-danger); }
+.vc-pg-warn { color: var(--status-warning); }
+
+.vc-pg-decoration {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+    margin-left: 4px;
+}
+
+.vc-pg-chatbar-on { color: var(--status-positive, var(--text-positive)); }
+.vc-pg-chatbar-off { color: var(--interactive-normal); }
+.vc-pg-chatbar-warn { color: var(--status-danger); }
+.vc-pg-chatbar-nokey { color: var(--text-muted); opacity: .7; }
+
+.vc-pg-fpr {
+    font-family: var(--font-code);
+    font-size: 13px;
+    letter-spacing: .5px;
+    user-select: all;
+    word-break: break-all;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: var(--background-mod-subtle, var(--background-secondary));
+    color: var(--text-default, var(--text-normal));
+}
+
+.vc-pg-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+.vc-pg-table th, .vc-pg-table td {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--background-modifier-accent);
+    vertical-align: top;
+}
+.vc-pg-table code {
+    font-size: 11px;
+}
+
+.vc-pg-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.vc-pg-textarea {
+    width: 100%;
+    min-height: 180px;
+    font-family: var(--font-code);
+    font-size: 12px;
+}
+
+.vc-pg-muted { color: var(--text-muted); font-size: 12px; }
+.vc-pg-section { margin-bottom: 16px; }
+
+/* Encrypted attachments */
+.vc-pg-files { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+.vc-pg-file { display: flex; flex-direction: column; gap: 4px; }
+.vc-pg-file-name { font-weight: 600; word-break: break-all; }
+.vc-pg-preview img {
+    display: block;
+    max-width: min(400px, 100%);
+    max-height: 300px;
+    border-radius: 4px;
+    cursor: zoom-in;
+}
+.vc-pg-upload-on { color: var(--status-positive, var(--text-positive)); }
+.vc-pg-upload-off { color: var(--status-warning); }
+.vc-pg-filelist { margin: 8px 0 8px 20px; list-style: disc; }
+.vc-pg-filelist li { margin: 2px 0; }
+
+.vc-pg-chatbar-sign { color: var(--text-brand, var(--brand-500)); }
+.vc-pg-picker { display: flex; flex-direction: column; gap: 2px; max-height: 240px; overflow-y: auto; margin-top: 8px; }
+
+/* Decrypted image viewer (stands in for Discord's media viewer, see components/Lightbox.tsx) */
+.vc-pg-lightbox {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: auto;
+}
+.vc-pg-lightbox-closing {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-out;
+}
+.vc-pg-lightbox img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 4px;
+    cursor: zoom-in;
+    user-select: none;
+    touch-action: none;
+    transition: transform 0.15s ease-out;
+}
+.vc-pg-lightbox img.vc-pg-lightbox-zoomed { cursor: zoom-out; }
+.vc-pg-lightbox img.vc-pg-lightbox-grabbing { cursor: grabbing; }
+.vc-pg-lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 60%);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.vc-pg-lightbox-close:hover { background: rgb(0 0 0 / 85%); }
+.vc-pg-lightbox-caption {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    max-width: 80vw;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgb(0 0 0 / 60%);
+    color: #fff;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

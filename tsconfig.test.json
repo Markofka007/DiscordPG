@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ES2022"
+    ]
+  },
+  "include": [
+    "core/**/*.ts",
+    "native/**/*.ts",
+    "tests/**/*.ts"
+  ],
+  "exclude": [
+    "native/index.ts",
+    "native/confirm.ts",
+    "native/download.ts",
+    "core/backend.ts",
+    "core/send.ts",
+    "core/uploads.ts",
+    "core/integrity.ts"
+  ]
+}
