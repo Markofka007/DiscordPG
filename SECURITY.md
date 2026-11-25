@@ -1,7 +1,3 @@
-# Disclaimer
-
-This is a vibecoded personal project that I made for fun. DiscordPG has not been thoroughly QA tested at scale for all edge cases. Assume that there are flaws.
-
 # Security
 
 DiscordPG is a security tool, so this document is part of the product. If anything here does not match the code then don't trust the code. If anything here does not match the code of an official release, notify me immediately at marko@dread-sec.com.

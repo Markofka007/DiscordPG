@@ -4,7 +4,7 @@ GnuPG end-to-end encryption and signing for Discord **DMs, group DMs and server 
 
 The name is a play on GnuPG. This is a security-focused tool: see [SECURITY.md](SECURITY.md) for what this does and does not protect, and the design principles everything follows.
 
-This is a vibecoded personal project that I made for fun. DiscordPG has not been thoroughly QA tested at scale for all edge cases. Assume that there are flaws.
+DiscordPG is a vibecoded hobby project I made for fun. It hasn't been tested at scale, so expect bugs and performance issues. As a security tool, it has been reviewed for security issues, but it hasn't been independently audited. Use at your own risk.
 
 ## How it works
 
