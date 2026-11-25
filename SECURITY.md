@@ -60,9 +60,4 @@ content or private keys.
 
 ## Advisories
 
-* **0.2.3 and earlier: three issues found in a code audit, fixed in 0.2.4.**
-1. *Encryption to the wrong key.* A key in your keyring that carried a contact's primary key as a subkey could make messages "to" that contact be encrypted to the other key's owner instead (which key wins depends on gpg's keyring backend and import order). If you ever imported a key from someone you do not trust, run `gpg --list-keys --with-subkey-fingerprint` and look for a subkey fingerprint that equals a contact's primary fingerprint.
-2. *Private key accepted as a public key.* Importing a block labelled as a public key that actually held a private key showed an error but still put that key pair into your keyring, where it counted as one of your own keys. Check `gpg --list-secret-keys` for keys that are not yours and delete them (`gpg --delete-secret-and-public-keys <fingerprint>`).
-3. *Silent fallback to plaintext.* When encryption became impossible in a conversation that had it on (a member without a key joined a group DM, bindings failed to load, a message was sent in the first moments after startup), the next message was sent unencrypted with only the lock icon changing.
-
-* **0.2.0 and 0.2.1: locked attachments were sent unencrypted.** Discord uploads a file the moment it is added to the composer; those versions only swapped the bytes at send time, so the message referenced the already-uploaded original under a `.gpg` name. If you sent locked files with either version, delete those messages: the content is readable by Discord and anyone in the conversation. Fixed in 0.2.2, which holds uploads back in managed conversations until they are encrypted and refuses to send a locked file that Discord uploaded early.
+N/A

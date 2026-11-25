@@ -171,6 +171,4 @@ License: GPL-3.0-or-later (same as Vencord).
 
 ## Advisories
 
-* **0.2.3 and earlier: wrong-key encryption, private-key import and plaintext fallback.** A crafted key in your keyring could make messages for a contact be encrypted to someone else; a private key disguised as a public key block was imported despite the error shown; and a conversation whose encryption became impossible (e.g. a member without a key joined a group DM) silently sent the next message unencrypted. Fixed in 0.2.4. What to check in your keyring is described under Advisories in [SECURITY.md](SECURITY.md).
-
-* **0.2.0 and 0.2.1: locked attachments were sent unencrypted.** Discord uploads a file the moment it is added to the composer; those versions only swapped the bytes at send time, so the message referenced the already-uploaded original under a `.gpg` name. If you sent locked files with either version, delete those messages: the content is readable by Discord and anyone in the conversation. Fixed in 0.2.2, which holds uploads back in managed conversations until they are encrypted and refuses to send a locked file that Discord uploaded early.
+N/A
