@@ -9,9 +9,20 @@ DiscordPG is a vibecoded hobby project I made for fun. It hasn't been tested at 
 ## How it works
 
 ```
-Discord renderer (Vencord plugin, untrusted)       Electron main process (native/, trusted)
-  pre-send hook  ──encrypt request──▶  typed IPC  ──▶  gpg --encrypt --sign   ──▶ gpg-agent / scdaemon / YubiKey
-  message render ◀──plaintext+verdict─  validated  ◀──  gpg --decrypt
+ Discord renderer             │ Electron main process          │ gpg-agent / YubiKey
+ Vencord plugin, UNTRUSTED    │ native/, TRUSTED               │ private keys stay here
+──────────────────────────────┼────────────────────────────────┼───────────────────────
+ SEND                         │                                │
+   pre-send hook ─ plaintext ─┼──> validate request            │
+                              │    gpg --encrypt --sign ───────┼──> signs
+   Discord sends <────────────┼─── ciphertext                  │
+                              │                                │
+ RECEIVE                      │                                │
+   incoming PGP ─ ciphertext ─┼──> validate request            │
+                              │    gpg --decrypt ──────────────┼──> decrypts
+   rendered in place <────────┼─── plaintext + sig. verdict    │
+──────────────────────────────┴────────────────────────────────┴───────────────────────
+                          typed IPC
 ```
 
 * Your private key never enters Discord's process. All private-key operations happen in gpg-agent (and your smartcard, if you use one). PIN entry goes through pinentry, not Discord.
