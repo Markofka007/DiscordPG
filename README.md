@@ -78,7 +78,7 @@ Then fully restart Discord and open **Settings → Vencord → Plugins → Disco
 * **After Discord updates itself** the patch is gone (it lives in the `app-<version>` folder): run `pnpm inject` again.
 * **Removing DiscordPG:** delete `src/userplugins/discordPG.desktop` and run `pnpm build`. `pnpm uninject` removes Vencord from Discord altogether.
 
-Tested with Vencord 1.15.17 (`d07030c`), Discord stable on Linux, GnuPG 2.4.4. If the build fails on an older Vencord checkout, update Vencord first.
+Tested with Vencord 1.15.19 (`d086992`), Discord stable on Linux, GnuPG 2.4.4. If the build fails on an older Vencord checkout, update Vencord first.
 
 #### Other plugins in the same build
 
