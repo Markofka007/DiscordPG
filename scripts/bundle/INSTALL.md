@@ -9,7 +9,7 @@ newer bundle.
 
 **Already build Vencord from source, or have your own plugins?** Do not use this bundle. Add DiscordPG
 to your own checkout instead and keep everything: see "Add DiscordPG to your Vencord" in the README at
-<https://github.com/OWNER/DiscordPG>. If the install script finds an existing Vencord it explains the
+<https://github.com/Markofka007/DiscordPG>. If the install script finds an existing Vencord it explains the
 above and asks before it changes anything.
 
 ## 1. Install GnuPG
